@@ -1,6 +1,7 @@
 package org.example.pages.mobile;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import org.apache.logging.log4j.LogManager;
@@ -19,17 +20,28 @@ import java.util.List;
 import java.util.Set;
 
 public class BasePageMobile {
-    protected final RemoteWebDriver driver;
+    protected final AndroidDriver driver;
     protected final WebDriverWait wait;
     protected Logger logger = LogManager.getLogger(this.getClass());
 
     public BasePageMobile(RemoteWebDriver driver) {
-        this.driver = driver;
+        this.driver = (AndroidDriver) driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     public void click(WebElement element, String elementName) {
+        try{
+            logger.debug("Clicking on element " + elementName);
+            wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        } catch (StaleElementReferenceException exception) {
+            logger.error("StaleElementReferenceException occurred, retrying clicking on " + elementName);
+            System.out.println(exception.getMessage());
+            wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        }
+    }
+
+    public void click(By element, String elementName) {
         try{
             logger.debug("Clicking on element " + elementName);
             wait.until(ExpectedConditions.elementToBeClickable(element)).click();
@@ -63,11 +75,13 @@ public class BasePageMobile {
     public boolean scrollDownTillElementVisible(By element, int maxScrolls) {
         for (int i = 0; i < maxScrolls; i++) {
             if (!driver.findElements(element).isEmpty()) {
+                logger.debug("Scrolled Successfully");
                 return true;
             }
 
             swipeUp();
         }
+        logger.error("Failed Scrolling");
         return false;
     }
 

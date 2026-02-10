@@ -1,25 +1,18 @@
 package org.example.testcases;
 
-import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.example.customexceptions.DriverNotFoundException;
 import org.example.platformfactory.DriverFactory;
 import org.example.platformfactory.Platform;
 import org.example.utils.ConfigReader;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Base64;
 
 public class BaseTest {
     protected RemoteWebDriver driver;
 
+    // TODO make listeners, use ITestListener, IRetryAnalyzer etc
+    // TODO OnTestFailure -> Screen record
     @BeforeClass
     public void setup() {
         driver = DriverFactory.getDriver(Platform.valueOf(ConfigReader.getProperty("PLATFORM").toUpperCase())).createDriver();

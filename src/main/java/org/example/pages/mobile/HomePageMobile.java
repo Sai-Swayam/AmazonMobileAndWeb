@@ -1,9 +1,10 @@
 package org.example.pages.mobile;
 
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.example.pages.interfaces.HomePage;
 import org.example.pages.interfaces.SearchResultsPage;
-import org.example.utils.PermissionUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -28,14 +29,21 @@ public class HomePageMobile extends BasePageMobile implements HomePage {
         // TODO
         skipSignIn();
         click(buttonSearch, "buttonSearch");
-//        sendKeys(inputSearch, "inputSearch", product.concat("\n"));
         sendKeys(inputSearch, "inputSearch", product);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+
+//        try {
+//            Thread.sleep(5000);
+//        }
+//        catch (InterruptedException e) {
+//
+//        }
+
         return new SearchResultsPageMobile(driver);
     }
 
     // Helpers
     private void skipSignIn() {
-//        PermissionUtils.denyPermission(driver);
         click(buttonSkipSignIn, "buttonSkipSignIn");
     }
 }

@@ -7,8 +7,9 @@ import org.testng.annotations.Test;
 public class SearchProductTest extends BaseTest{
     @Test
     public void testSearch() throws InterruptedException {
-        String actual = SearchProductTestHelper.helperSearchForProduct(driver, "Philips air fryer\n");
+        String actual = SearchProductTestHelper.helperSearchForProduct(driver, "Philips air fryer");
         Assert.assertEquals(actual, "temp test data");
+
 //        Thread.sleep(4000);
     }
 }

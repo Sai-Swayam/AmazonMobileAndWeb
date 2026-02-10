@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AndroidDriverManager implements DriverManager {
+    // TODO apply thread local
     @Override
     public AppiumDriver createDriver() {
         AndroidDriver driver = null;

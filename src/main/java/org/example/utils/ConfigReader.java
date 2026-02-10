@@ -21,6 +21,7 @@ public class ConfigReader {
         }
     }
 
+    // TODO system.getProperty implementation for commandline
     public static String getProperty(String property) {
         return properties.getProperty(property);
     }

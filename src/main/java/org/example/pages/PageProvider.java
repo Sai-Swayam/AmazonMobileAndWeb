@@ -1,6 +1,5 @@
 package org.example.pages;
 
-import org.example.customexceptions.IllegalMobilePlatformException;
 import org.example.pages.interfaces.HomePage;
 import org.example.pages.interfaces.SearchResultsPage;
 import org.example.pages.mobile.HomePageMobile;
