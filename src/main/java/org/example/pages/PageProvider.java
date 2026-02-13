@@ -6,6 +6,7 @@ import org.example.pages.mobile.HomePageMobile;
 import org.example.pages.mobile.SearchResultsPageMobile;
 import org.example.pages.web.HomePageWeb;
 import org.example.pages.web.SearchResultsPageWeb;
+import org.example.platformfactory.DriverFactory;
 import org.example.platformfactory.Platform;
 import org.example.utils.ConfigReader;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,7 +14,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import static org.example.platformfactory.Platform.WEB;
 
 public class PageProvider {
-    static Platform platform = Platform.valueOf(ConfigReader.getProperty("PLATFORM").toUpperCase());
+    static Platform platform = DriverFactory.getPlatform();
+
+//    static {
+//        String platformName = System.getProperty("platform");
+//        if (platformName == null || platformName.isBlank())
+//            platformName = ConfigReader.getProperty("PLATFORM");
+//        platform = Platform.valueOf(platformName.toUpperCase());
+//    }
 
     public static HomePage getHomePage(RemoteWebDriver driver) {
         if (platform.equals(WEB)) return new HomePageWeb(driver);

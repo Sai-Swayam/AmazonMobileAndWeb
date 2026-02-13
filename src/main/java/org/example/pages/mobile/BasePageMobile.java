@@ -85,11 +85,12 @@ public class BasePageMobile {
         return false;
     }
 
+    // TODO add arguments later
     public void swipeUp() {
         Dimension size = driver.manage().window().getSize();
 
         int startX = size.width / 2;
-        int startY = (int) (size.height * 0.8);
+        int startY = (int) (size.height * 0.5);
         int endY = (int) (size.height * 0.2);
 
         PointerInput finger = new PointerInput(

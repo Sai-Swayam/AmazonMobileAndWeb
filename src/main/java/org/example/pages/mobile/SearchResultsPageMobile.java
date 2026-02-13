@@ -16,20 +16,22 @@ public class SearchResultsPageMobile extends BasePageMobile implements SearchRes
 //    private WebElement optionFirstPhilips;
 
 //    @FindBy(xpath = "new UiSelector().description('Philips Air Fryer 2000 Series - 13-in-1 functions, 6.6 Quarts, Compact Design with Cooking Window, Black, (NA231/00)')")
-    private final By optionFirstPhilips = AppiumBy.androidUIAutomator("new UiSelector().description(\"Philips Air Fryer 2000 Series - 13-in-1 functions, 6.6 Quarts, Compact Design with Cooking Window, Black, (NA231/00)\")");
 //    private WebElement optionFirstPhilips;
+
+    //    private final By optionFirstPhilips = AppiumBy.androidUIAutomator("new UiSelector().description(\"Philips Air Fryer 2000 Series - 13-in-1 functions, 6.6 Quarts, Compact Design with Cooking Window, Black, (NA231/00)\")");
+    private final By optionFirstPhilips = AppiumBy.xpath("(//android.widget.TextView[@text=\"Philips\"])[1]\n");
 
 
     // Actions
     @Override
     public void addToCartFirstResult() {
-        changeContextToWeb();
         // TODO temp
         scrollDownTillElementVisible(optionFirstPhilips, 4);
         click(optionFirstPhilips, "optionFirstPhilips");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

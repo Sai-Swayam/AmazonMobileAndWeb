@@ -15,7 +15,11 @@ public class BaseTest {
     // TODO OnTestFailure -> Screen record
     @BeforeClass
     public void setup() {
-        driver = DriverFactory.getDriver(Platform.valueOf(ConfigReader.getProperty("PLATFORM").toUpperCase())).createDriver();
+        // From commandline arguments
+//        String platform = System.getProperty("platform");
+//        // If not passed via commandline, take from config reader
+//        if (platform == null || platform.isBlank()) platform = ConfigReader.getProperty("PLATFORM");
+        driver = DriverFactory.getDriver().createDriver();
 
         if (driver == null) throw new DriverNotFoundException("No driver found");
     }
