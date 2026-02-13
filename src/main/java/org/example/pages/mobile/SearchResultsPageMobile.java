@@ -25,7 +25,6 @@ public class SearchResultsPageMobile extends BasePageMobile implements SearchRes
     // Actions
     @Override
     public void addToCartFirstResult() {
-        // TODO temp
         scrollDownTillElementVisible(optionFirstPhilips, 4);
         click(optionFirstPhilips, "optionFirstPhilips");
         try {

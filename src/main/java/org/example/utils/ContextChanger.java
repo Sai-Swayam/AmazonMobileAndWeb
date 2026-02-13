@@ -5,9 +5,19 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.Set;
 
+/**
+ * Util class to change context from WEBVIEW to NATIVE_APP or vice versa
+ */
+
 public class ContextChanger {
 
-    // TODO extract it to a separate util class
+    /**
+     * Method to change the context
+     *
+     * @param driver : RemoteWebDriver instance where the context has to be changed
+     * @param option : Context option that the context has to be switched to
+     */
+
     public static void changeContext(RemoteWebDriver driver, String option) {
         SupportsContextSwitching tempDriver = (SupportsContextSwitching) driver;
         Set<String> contexts = tempDriver.getContextHandles();

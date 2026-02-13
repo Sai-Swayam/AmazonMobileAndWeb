@@ -16,7 +16,7 @@ public interface DriverFactory {
    public static Platform getPlatform() {
        String platformName = System.getProperty("platform");
        // If not passed via commandline, take from config reader
-       if (platformName == null || platformName.isBlank()) platformName = ConfigReader.getProperty("PLATFORM");
+       if (platformName == null || platformName.isBlank()) platformName = ConfigReader.getProperty("mobile.platform");
 
        return Platform.valueOf(platformName.toUpperCase());
    }

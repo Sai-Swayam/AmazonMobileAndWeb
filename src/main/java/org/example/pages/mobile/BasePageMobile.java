@@ -116,20 +116,4 @@ public class BasePageMobile {
 
         driver.perform(List.of(swipeUp));
     }
-    // TODO extract it to a separate util class
-    public void changeContext(String option) {
-        SupportsContextSwitching tempDriver = (SupportsContextSwitching) driver;
-        Set<String> contexts = tempDriver.getContextHandles();
-        for (String context : contexts) {
-            if (option.equalsIgnoreCase("web") && context.contains("WEBVIEW")) {
-                tempDriver.context(context);
-                break;
-            }
-            if (option.equalsIgnoreCase("native")) {
-                tempDriver.context("NATIVE_APP");
-                break;
-            }
-        }
-    }
-
 }

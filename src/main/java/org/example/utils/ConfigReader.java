@@ -6,6 +6,10 @@ import java.util.Properties;
 
 public class ConfigReader {
 
+    /**
+     * Util class to read properties from config.properties file
+     */
+
     private static Properties properties;
 
     static {
@@ -21,7 +25,12 @@ public class ConfigReader {
         }
     }
 
-    // TODO system.getProperty implementation for commandline
+    /**
+     * Method to get the specific property
+     *
+     * @param property : Name of the property to be fetched
+     */
+
     public static String getProperty(String property) {
         return properties.getProperty(property);
     }

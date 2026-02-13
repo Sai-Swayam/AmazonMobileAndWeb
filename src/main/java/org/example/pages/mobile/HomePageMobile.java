@@ -26,8 +26,7 @@ public class HomePageMobile extends BasePageMobile implements HomePage {
     // Actions
     @Override
     public SearchResultsPage searchForProduct(String product) {
-        // TODO
-        skipSignIn();
+//        skipSignIn(); // use it when "appium:noReset" is set to false
         click(buttonSearch, "buttonSearch");
         sendKeys(inputSearch, "inputSearch", product);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));

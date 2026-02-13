@@ -16,13 +16,6 @@ import static org.example.platformfactory.Platform.WEB;
 public class PageProvider {
     static Platform platform = DriverFactory.getPlatform();
 
-//    static {
-//        String platformName = System.getProperty("platform");
-//        if (platformName == null || platformName.isBlank())
-//            platformName = ConfigReader.getProperty("PLATFORM");
-//        platform = Platform.valueOf(platformName.toUpperCase());
-//    }
-
     public static HomePage getHomePage(RemoteWebDriver driver) {
         if (platform.equals(WEB)) return new HomePageWeb(driver);
         return new HomePageMobile(driver);
