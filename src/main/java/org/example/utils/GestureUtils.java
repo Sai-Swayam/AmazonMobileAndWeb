@@ -16,17 +16,17 @@ public class GestureUtils {
                 return true;
             }
 
-            swipeUp(driver);
+            swipeUp(driver, 0.8f, 0.5f);
         }
         return false;
     }
 
-    public static void swipeUp(RemoteWebDriver driver) {
+    public static void swipeUp(RemoteWebDriver driver, float yStartPercent, float yEndPercent) {
         Dimension size = driver.manage().window().getSize();
 
         int startX = size.width / 2;
-        int startY = (int) (size.height * 0.8);
-        int endY = (int) (size.height * 0.2);
+        int startY = (int) (size.height * yStartPercent);
+        int endY = (int) (size.height * yEndPercent);
 
         PointerInput finger = new PointerInput(
                 PointerInput.Kind.TOUCH, "finger");

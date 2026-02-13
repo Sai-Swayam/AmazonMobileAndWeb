@@ -25,5 +25,7 @@ public class AndroidDriverManager implements DriverManager {
         return driver;
 
         //TODO CommonOptions class to be passed here , as well as AndroidOptions and IOSOptions
+        // above is disputed, because to adhere SRP, a separate MobileOptionsBuilder was created.
+        //
     }
 }
